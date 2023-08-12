@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plant Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"> <!-- Link to the home page -->
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="location.html">Location</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <a href="index.html" class="banner-link">
+    <div class="banner">
+        
+        <div class="growing-plant pot left">
+            <img src="images/pot.png" alt="Pot" class="pot-image">
+            <div class="grass"></div>
+        </div>
+        <h1>Oster Plants</h1>
+        <div class="growing-plant pot right">
+            <img src="images/pot.png" alt="Pot" class="pot-image">
+            <div class="grass"></div>
+        </div>
+        
+    </div>
+</a>
+
+    <div id="plantContainer" class="card-container">
+        <!-- Plants will be dynamically added here -->
+    </div>
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        const spreadsheetId = "1_zRC2PbEiPBZD0CTRvla_jOUi0ai53HUvOppYDcf5qQ";
+        const range = "plants!A2:Q"; // Adjust the range as needed
+
+        function initApp() {
+            gapi.load('client', () => {
+                gapi.client.init({
+                    apiKey: 'AIzaSyCtx3zUL6IL1FIXnjtkF4c-R3VOxlqemQk',
+                    discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+                }).then(() => {
+                    loadPlants();
+                });
+            });
+        }
+
+        function loadPlants() {
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: spreadsheetId,
+        range: range,
+    }).then(response => {
+        const values = response.result.values;
+        const plantContainer = document.getElementById('plantContainer');
+
+        values.forEach(row => {
+            const [name, price, quantity, urlName] = row;
+
+            const plantCard = document.createElement('div');
+            plantCard.classList.add('plant-card');
+
+            const cardContent = `
+                <h2>${name}</h2>
+                <img src="images/${urlName}" alt="${name}" class="plant-image">
+                <p>Price: $${price}</p>
+                <p>Quantity: ${quantity}</p>
+            `;
+
+            plantCard.innerHTML = cardContent;
+
+            // Event Listener for each card to show modal
+            plantCard.addEventListener('click', () => {
+                document.getElementById('modal-title').textContent = name;
+                document.getElementById('modal-price').textContent = `Price: $${price}`;
+                document.getElementById('modal-quantity').textContent = `Quantity: ${quantity}`;
+
+                const modalImage = document.getElementById('modal-image');
+            modalImage.src = `images/${urlName}`;
+                document.getElementById('myModal').style.display = 'block';
+            });
+
+            plantContainer.appendChild(plantCard);
+        });
+    });
+}
+
+// Close the modal when clicking on the close button or outside the modal
+// try{
+// document.querySelector('.close').addEventListener('click', () => {
+//         document.getElementById('myModal').style.display = 'none';
+// });}catch{}
+
+window.addEventListener('click', event => {
+    if (event.target.id === 'myModal') {
+        document.getElementById('myModal').style.display = 'none';
+    }
+});
+
+
+// Call the initApp function to start loading the data
+initApp();
+
+        
+    </script>
+
+    
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <!-- <span class="close">&times;</span> -->
+        <h2 id="modal-title" class="modal-title"></h2>
+        <img id="modal-image" src="" alt="Plant Image" class="modal-image">
+        <p id="modal-price" class="modal-price"></p>
+        <p id="modal-quantity" class="modal-quantity"></p>
+        <!-- Add more details here as needed -->
+    </div>
+</div>
+</body>
+</html>

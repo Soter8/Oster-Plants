@@ -1,0 +1,354 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.plant-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.plant-card h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.plant-card p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #666;
+}
+
+.plant-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #999;
+}
+
+header {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    font-size: 1.1rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #f0f0f0;
+}
+
+/* Banner */
+
+/* Add these styles to your existing CSS */
+
+/* Header */
+header {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+.navbar {
+    /* ... existing styles ... */
+    max-width: 1200px; /* Limit the width of the header */
+    margin: 0 auto;
+}
+
+/* Banner */
+.banner {
+    background-color: #fff; /* Change to match card background color */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Add space between header and banner */
+    max-width: 1200px; /* Limit the width of the banner */
+    margin-left: auto; /* Center the banner */
+    margin-right: auto; /* Center the banner */
+	background: linear-gradient(135deg, #f0f0f0, lightgreen);
+	font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+	
+}
+.banner-link {
+	text-decoration: none; /* Remove text decoration */
+    color: inherit; /* Inherit the text color from parent */
+}
+.banner h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center; /* Center the text */
+    flex-grow: 1; /* Allow the text to expand and push growing plants to the sides */
+}
+
+/* Growing Plants */
+.growing-plant {
+    width: 100px;
+    height: 80px;
+    background-image: url("images/flower.svg"); /* Adjust the image path */
+    background-size: contain;
+    transition: height 1s ease;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+.pot-image {
+    width: 80px;
+    height: auto;
+    margin: 0 auto;
+    z-index: 1; /* Place the pot image above the grass */
+}
+
+/* Adjust the left and right values for the growing plants */
+.growing-plant.left {
+    left: calc(50% - 230px); /* Adjust the distance from the text */
+}
+
+.growing-plant.right {
+    right: calc(50% - 230px); /* Adjust the distance from the text */
+    transform: translateY(-50%); /* Vertically center the plant */
+    transform: scaleX(-1); /* Flip the plant horizontally */
+}
+
+.banner:hover .growing-plant {
+    height: 180px;
+}
+
+/*model*/
+/* Modal */
+.modal {
+    display: none; /* Hide the modal by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+	font-size: 1.5rem;
+}
+
+/* Modal */
+.modal-content {
+	background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+	height: 50%;
+
+}
+
+.modal-image {
+    /* ... existing styles ... */
+    max-width: 80%; /* Maintain the image's aspect ratio within the modal */
+    width: 70%; /* Set the image's width to match the modal's width */
+    height: auto; /* Maintain the image's aspect ratio */
+	max-height: 60%;
+}
+.modal-title {
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+
+.modal-price,
+.modal-quantity {
+    margin: 5px 0;
+}
+
+/* About Section */
+.about-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Cash Policy Section */
+.cash-policy {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cash-policy h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.cash-policy p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Location Section */
+.location-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.location-section h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.location-section p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Map Container */
+.map-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 75%; /* Set the aspect ratio of the map (height / width) */
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* contact */
+.contact-info {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+/* Centering the contact info */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Location Section */
+.contact-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+}
