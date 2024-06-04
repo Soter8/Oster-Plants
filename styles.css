@@ -160,11 +160,11 @@ header {
 
 /* Adjust the left and right values for the growing plants */
 .growing-plant.left {
-    left: calc(50% - 230px); /* Adjust the distance from the text */
+    left: calc(50% - 180px); /* Adjust the distance from the text */
 }
 
 .growing-plant.right {
-    right: calc(50% - 230px); /* Adjust the distance from the text */
+    right: calc(50% - 180px); /* Adjust the distance from the text */
     transform: translateY(-50%); /* Vertically center the plant */
     transform: scaleX(-1); /* Flip the plant horizontally */
 }
