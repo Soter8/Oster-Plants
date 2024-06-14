@@ -164,7 +164,6 @@ header {
 /* End Divider */
 
 
-/*model*/
 /* Modal */
 .modal {
     display: none; /* Hide the modal by default */
@@ -175,12 +174,12 @@ header {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 999;
-	font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
-/* Modal */
+/* Modal Content */
 .modal-content {
-	background-color: white;
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -188,30 +187,84 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-	display: flex;
-    flex-direction: column; /* Arrange items vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
-	height: 50%;
-
+    display: flex;
+    flex-direction: column;
+    width: 80%; /* Width for desktop */
+    max-width: 800px; /* Max width for larger screens */
+    height: 80%; /* Height for desktop */
+    max-height: 600px; /* Max height for larger screens */
+    overflow-y: auto; /* Enable scrolling if content overflows */
 }
 
+/* Modal Columns */
+.modal-columns {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Left Modal */
+.leftModal {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Right Modal */
+.rightModal {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+/* Modal Image */
 .modal-image {
-    /* ... existing styles ... */
-    max-width: 80%; /* Maintain the image's aspect ratio within the modal */
-    width: 70%; /* Set the image's width to match the modal's width */
+    max-width: 100%; /* Maintain the image's aspect ratio within the modal */
     height: auto; /* Maintain the image's aspect ratio */
-	max-height: 60%;
 }
+
+/* Modal Title */
 .modal-title {
-    font-size: 1.8rem;
+    font-size: 2rem; /* Larger font size for title */
     margin: 10px 0;
 }
 
+/* Modal Details */
+.modal-alert,
 .modal-price,
-.modal-quantity {
+.modal-dimensions,
+.modal-sun,
+.modal-bloomColor,
+.modal-characteristics {
     margin: 5px 0;
 }
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%; /* Adjust width for mobile */
+        height: 90%; /* Adjust height for mobile */
+        padding: 10px; /* Adjust padding for mobile */
+    }
+    .modal-title {
+        font-size: 1.5rem; /* Adjust font size for mobile */
+    }
+    .modal-columns {
+        flex-direction: column; /* Stack columns vertically on mobile */
+    }
+    .modal-image {
+        width: 100%; /* Adjust image width for mobile */
+        margin-bottom: 20px; /* Add margin below image */
+    }
+    .rightModal {
+        padding-left: 0; /* Remove left padding for mobile */
+    }
+}
+
+
 
 /* About Section */
 .about-section {

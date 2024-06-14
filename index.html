@@ -53,7 +53,6 @@
     <script src="https://apis.google.com/js/api.js"></script>
     <script>
         const spreadsheetId = "1_zRC2PbEiPBZD0CTRvla_jOUi0ai53HUvOppYDcf5qQ";
-        const range = "Shrubs!A2:Q"; // Adjust the range as needed
 
         function initApp() {
             gapi.load('client', () => {
@@ -81,16 +80,16 @@
                     const plantContainer = document.getElementById(item.containerId);
 
                     values.forEach(row => {
-                        const [name, price, alerts, urlName, dimensions, sun, bloomColor, characteristics] = row;
+                        const [name, price, alert, imgPot, imgSpeciman, imgHedge, imgBlossom, dimensions, sun, bloomColor, characteristics] = row;
 
                         const plantCard = document.createElement('div');
                         plantCard.classList.add('plant-card');
 
                         const cardContent = `
                             <h2>${name}</h2>
-                            <img src="images/${urlName}" alt="${name}" class="plant-image">
+                            <img src="images/${imgPot}" alt="${name}" class="plant-image">
                             <p>Price: $${price}</p>
-                            <p style="color:darkcyan;"><b>${alerts}</b></p>
+                            <p style="color:darkcyan;"><b>${alert}</b></p>
                         `;
 
                         plantCard.innerHTML = cardContent;
@@ -99,10 +98,14 @@
                         plantCard.addEventListener('click', () => {
                             document.getElementById('modal-title').textContent = name;
                             document.getElementById('modal-price').textContent = `Price: $${price}`;
-                            document.getElementById('modal-quantity').textContent = `Quantity: ${alerts}`;
+                            document.getElementById('modal-alert').textContent =  `${alert}`;
+                            document.getElementById('modal-dimentions').textContent = `Dimensions: ${dimensions}`;
+                            document.getElementById('modal-sun').textContent = `Sun: ${sun}`;
+                            document.getElementById('modal-bloomColor').textContent = `Bloom Color: ${bloomColor}`;
+                            document.getElementById('modal-characteristics').textContent = `Characteristics: ${characteristics}`;
 
                             const modalImage = document.getElementById('modal-image');
-                            modalImage.src = `images/${urlName}`;
+                            modalImage.src = `images/${imgPot}`;
                             document.getElementById('myModal').style.display = 'block';
                         });
 
@@ -113,7 +116,7 @@
         }
 
 
-        // Close the modal when clicking on the close button or outside the modal
+//         Close the modal when clicking on the close button or outside the modal
 // try{
 // document.querySelector('.close').addEventListener('click', () => {
 //         document.getElementById('myModal').style.display = 'none';
@@ -132,15 +135,23 @@ initApp();
         
     </script>
 
-    
+
 
 <div id="myModal" class="modal">
     <div class="modal-content">
         <!-- <span class="close">&times;</span> -->
         <h2 id="modal-title" class="modal-title"></h2>
-        <img id="modal-image" src="" alt="Plant Image" class="modal-image">
+        <div class="modal-columns">
+        <div class="leftModal"><img id="modal-image" src="" alt="Plant Image" class="modal-image"></div>
+        <div class="rightModal">
+        <p id="modal-alert" class="modal-alert"></p>
         <p id="modal-price" class="modal-price"></p>
-        <p id="modal-quantity" class="modal-quantity"></p>
+        <p id="modal-dimentions" class="modal-dimentions"></p>
+        <p id="modal-sun" class="modal-sun"></p>
+        <p id="modal-bloomColor" class="modal-bloomColor"></p>
+        <p id="modal-characteristics" class="modal-characteristics"></p>
+        </div>
+        </div>
         <!-- Add more details here as needed -->
     </div>
 </div>
