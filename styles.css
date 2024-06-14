@@ -330,15 +330,10 @@ header {
     .modal-title {
         font-size: 1.5rem; /* Adjust font size for mobile */
     }
-    .modal-columns {
-        flex-direction: column; /* Stack columns vertically on mobile */
-    }
+
     .modal-image {
         width: 50%; /* Adjust image width for mobile */
         margin-bottom: 20px; /* Add margin below image */
-    }
-    .rightModal {
-        padding-left: 0; /* Remove left padding for mobile */
     }
 }
 
