@@ -109,7 +109,6 @@ header {
 
 /* Banner */
 .banner {
-    background-color: #fff; /* Change to match card background color */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -117,61 +116,26 @@ header {
     position: relative;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 20px; /* Add space between header and banner */
-    max-width: 1200px; /* Limit the width of the banner */
+    max-width: 40rem; /* Limit the width of the banner */
+    max-height: 20rem;
     margin-left: auto; /* Center the banner */
     margin-right: auto; /* Center the banner */
-	background: linear-gradient(135deg, #f0f0f0, lightgreen);
-	font-size: 3rem;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-	
+    overflow: hidden; /* Ensure child elements stay within the banner */
 }
+
 .banner-link {
-	text-decoration: none; /* Remove text decoration */
+    text-decoration: none; /* Remove text decoration */
     color: inherit; /* Inherit the text color from parent */
 }
-.banner h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    color: #333;
-    text-align: center; /* Center the text */
-    flex-grow: 1; /* Allow the text to expand and push growing plants to the sides */
+
+.banner img {
+    max-width: 100%; /* Ensure the image does not exceed the width of its container */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Remove any inline spacing issues */
+    margin-top: 10px; /* Add space above the image */
+    object-fit: cover; /* Ensure the image covers the container (optional, based on your design) */
 }
 
-/* Growing Plants */
-.growing-plant {
-    width: 100px;
-    height: 80px;
-    background-image: url("images/flower.svg"); /* Adjust the image path */
-    background-size: contain;
-    transition: height 1s ease;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-}
-.pot-image {
-    width: 80px;
-    height: auto;
-    margin: 0 auto;
-    z-index: 1; /* Place the pot image above the grass */
-}
-
-/* Adjust the left and right values for the growing plants */
-.growing-plant.left {
-    left: calc(50% - 370px); /* Adjust the distance from the text */
-}
-
-.growing-plant.right {
-    right: calc(50% - 365px); /* Adjust the distance from the text */
-    transform: translateY(-50%); /* Vertically center the plant */
-    transform: scaleX(-1); /* Flip the plant horizontally */
-}
-
-.banner:hover .growing-plant {
-    height: 180px;
-}
 
 /*model*/
 /* Modal */
