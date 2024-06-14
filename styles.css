@@ -320,11 +320,12 @@ header {
 
 
 /* Mobile Styles */
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
     .modal-content {
         width: 90%; /* Adjust width for mobile */
-        height: 90%; /* Adjust height for mobile */
+        height: 100%; /* Adjust height for mobile */
         padding: 10px; /* Adjust padding for mobile */
+        font-size: 2.5rem;
     }
     .modal-title {
         font-size: 1.5rem; /* Adjust font size for mobile */
@@ -333,7 +334,7 @@ header {
         flex-direction: column; /* Stack columns vertically on mobile */
     }
     .modal-image {
-        width: 100%; /* Adjust image width for mobile */
+        width: 50%; /* Adjust image width for mobile */
         margin-bottom: 20px; /* Add margin below image */
     }
     .rightModal {
