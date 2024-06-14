@@ -99,13 +99,28 @@
                             document.getElementById('modal-title').textContent = name;
                             document.getElementById('modal-price').textContent = `Price: $${price}`;
                             document.getElementById('modal-alert').textContent =  `${alert}`;
-                            document.getElementById('modal-dimentions').textContent = `Dimensions: ${dimensions}`;
+                            document.getElementById('modal-dimensions').textContent = `Dimensions: ${dimensions}`;
                             document.getElementById('modal-sun').textContent = `Sun: ${sun}`;
                             document.getElementById('modal-bloomColor').textContent = `Bloom Color: ${bloomColor}`;
                             document.getElementById('modal-characteristics').textContent = `Characteristics: ${characteristics}`;
 
-                            const modalImage = document.getElementById('modal-image');
-                            modalImage.src = `images/${imgPot}`;
+                            // Populate the carousel with images
+                            const carouselInner = document.querySelector('.carousel-inner');
+                            carouselInner.innerHTML = `
+                                <div class="carousel-item active">
+                                    <img src="images/${imgPot}" alt="${name} in Pot">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/${imgSpeciman}" alt="${name} Speciman">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/${imgHedge}" alt="${name} as Hedge">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/${imgBlossom}" alt="${name} Blossom">
+                                </div>
+                            `;
+
                             document.getElementById('myModal').style.display = 'block';
                         });
 
@@ -117,16 +132,41 @@
 
 
 //         Close the modal when clicking on the close button or outside the modal
-// try{
-// document.querySelector('.close').addEventListener('click', () => {
-//         document.getElementById('myModal').style.display = 'none';
-// });}catch{}
-
-window.addEventListener('click', event => {
-    if (event.target.id === 'myModal') {
+try{
+document.querySelector('.close').addEventListener('click', () => {
         document.getElementById('myModal').style.display = 'none';
-    }
-});
+});}catch{}
+
+        window.addEventListener('click', event => {
+            if (event.target.id === 'myModal' || event.target.classList.contains('close')) {
+                document.getElementById('myModal').style.display = 'none';
+            }
+        });
+
+        // Carousel controls
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const items = document.querySelectorAll('.carousel-item');
+            if (index >= items.length*2) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = items.length - 1;
+            } else {
+                currentSlide = index;
+            }
+            items.forEach((item, i) => {
+                item.style.transform = `translateX(${(i - currentSlide) * 100}%)`;
+            });
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 2);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 2);
+        }
 
 
 // Call the initApp function to start loading the data
@@ -137,23 +177,32 @@ initApp();
 
 
 
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <!-- <span class="close">&times;</span> -->
-        <h2 id="modal-title" class="modal-title"></h2>
-        <div class="modal-columns">
-        <div class="leftModal"><img id="modal-image" src="" alt="Plant Image" class="modal-image"></div>
-        <div class="rightModal">
-        <p id="modal-alert" class="modal-alert"></p>
-        <p id="modal-price" class="modal-price"></p>
-        <p id="modal-dimentions" class="modal-dimentions"></p>
-        <p id="modal-sun" class="modal-sun"></p>
-        <p id="modal-bloomColor" class="modal-bloomColor"></p>
-        <p id="modal-characteristics" class="modal-characteristics"></p>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title" class="modal-title"></h2>
+            <div class="modal-columns">
+                <div class="leftModal">
+                    <div class="carousel">
+                        <div class="carousel-inner">
+                            <!-- Carousel items will be added here dynamically -->
+                        </div>
+                        <div class="carousel-overlay-left" onclick="prevSlide()"></div>
+                        <div class="carousel-overlay-right" onclick="nextSlide()"></div>
+                        <div class="carousel-arrow carousel-arrow-left">&lt;</div>
+                        <div class="carousel-arrow carousel-arrow-right">&gt;</div>
+                    </div>
+                </div>
+                <div class="rightModal">
+                    <p id="modal-alert" class="modal-alert"></p>
+                    <p id="modal-price" class="modal-price"></p>
+                    <p id="modal-dimensions" class="modal-dimensions"></p>
+                    <p id="modal-sun" class="modal-sun"></p>
+                    <p id="modal-bloomColor" class="modal-bloomColor"></p>
+                    <p id="modal-characteristics" class="modal-characteristics"></p>
+                </div>
+            </div>
         </div>
-        </div>
-        <!-- Add more details here as needed -->
     </div>
-</div>
 </body>
 </html>
