@@ -136,6 +136,33 @@ header {
     object-fit: cover; /* Ensure the image covers the container (optional, based on your design) */
 }
 
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0; /* Adjust the margin as needed */
+    position: relative;
+    text-align: center;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 3px dashed grey; /* Adjust the line color */
+    margin: 0 10px; /* Adjust the spacing around the text */
+}
+
+.divider-text {
+    font-size: 2rem; /* Adjust the font size as needed */
+    font-family: "Andale Mono", monospace; /* Adjust the font family */
+    color: #666666; /* Adjust the text color */
+    padding: 0 10px; /* Add padding around the text */
+
+}
+/* End Divider */
+
 
 /*model*/
 /* Modal */
@@ -316,3 +343,4 @@ h1 {
     justify-content: center; /* Center items vertically */
     align-items: center; /* Center items horizontally */
 }
+
