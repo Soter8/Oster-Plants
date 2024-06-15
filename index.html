@@ -80,7 +80,7 @@
                     const plantContainer = document.getElementById(item.containerId);
 
                     values.forEach(row => {
-                        const [name, price, alert, imgPot, imgSpeciman, imgHedge, imgBlossom, dimensions, sun, bloomColor, characteristics] = row;
+                        const [name, price, alert, imgPot, imgSpecimen, imgHedge, imgBlossom, dimensions, sun, bloomColor, characteristics] = row;
 
                         const plantCard = document.createElement('div');
                         plantCard.classList.add('plant-card');
@@ -111,7 +111,7 @@
                                     <img src="images/${imgPot}" alt="${name} in Pot">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="images/${imgSpeciman}" alt="${name} Speciman">
+                                    <img src="images/${imgSpecimen}" alt="${name} Specimen">
                                 </div>
                                 <div class="carousel-item">
                                     <img src="images/${imgHedge}" alt="${name} as Hedge">
