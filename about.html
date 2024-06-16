@@ -25,6 +25,19 @@
         </div>
     </a>
 
+    <div class="picture-section">
+        <div class="carousel2">
+            <div class="carousel-inner2">
+                <img src="images/Background 1.jpg" class="carousel-item2 active" alt="Image 1">
+                <img src="images/Background 3.jpg" class="carousel-item2" alt="Image 2">
+                <img src="images/Background 4.jpg" class="carousel-item2" alt="Image 3">
+                <img src="images/Background 5.jpg" class="carousel-item2" alt="Image 3">
+                <img src="images/Background 7.jpg" class="carousel-item2" alt="Image 3">
+                <!-- Add more images as needed -->
+            </div>
+        </div>
+    </div>
+
 <div class="about-section">
     <h1>About Us</h1>
     <p>Welcome to Pleasant Valley Propagators - all locally grown plants!</p>
@@ -39,5 +52,29 @@
     <p>We believe that dealing in cash helps us stay true to our roots and ensures that our focus remains on what truly matters - the plants and the community that shares our love for them.</p>
     <p>Thank you for being a part of our journey, and we look forward to sharing the beauty of homegrown plants with you!</p>
 </div>
+
+
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item2');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        setInterval(nextSlide, 4000); // Change image every 4 seconds
+    </script>
 </body>
 </html>
