@@ -145,6 +145,7 @@
                                 const imgElement = document.createElement('img');
                                 imgElement.src = `images/${image.src}`;
                                 imgElement.alt = image.alt;
+                                imgElement.loading = 'lazy';
                                 carouselItem.appendChild(imgElement);
                                 carouselInner.appendChild(carouselItem);
                             }
