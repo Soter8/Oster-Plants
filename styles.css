@@ -258,6 +258,7 @@ header {
 .modal-bloomColor,
 .modal-characteristics {
     margin: 5px 0;
+    white-space: pre-line; /* This will preserve line breaks from the sheet */
 }
 
 /* soil amendment modal */
